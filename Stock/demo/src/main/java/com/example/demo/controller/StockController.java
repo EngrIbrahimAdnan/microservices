@@ -28,11 +28,6 @@ public class StockController {
 
     @GetMapping("/getStock")
     public AccountResponse getStock() {
-
         return stockService.getAll();
     }
-
-//    @PostMapping()
-//    public List<> getStock
-
 }

@@ -67,8 +67,6 @@ public class StockServiceImpl implements StockService {
 
     @Override
     public AccountResponse getAll() {
-//        return ((List<StockEntity>) repository.findAll());
-
         AccountResponse accountResponse = new AccountResponse(repository.findAll());
         return accountResponse;
 
