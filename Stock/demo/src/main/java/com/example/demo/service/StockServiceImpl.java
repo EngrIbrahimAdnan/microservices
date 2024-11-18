@@ -1,21 +1,24 @@
 package com.example.demo.service;
 
+import com.example.demo.bo.AccountResponse;
 import com.example.demo.bo.CreateStockRequest;
 import com.example.demo.bo.UpdateStockResponse;
 import com.example.demo.entity.StockEntity;
 import com.example.demo.repository.StockRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class StockServiceImpl implements StockService{
-private final StockRepository repository;
+public class StockServiceImpl implements StockService {
+    private final StockRepository repository;
 
     public StockServiceImpl(StockRepository repository) {
         this.repository = repository;
     }
 
     @Override
-    public UpdateStockResponse updateStock(CreateStockRequest request){
+    public UpdateStockResponse updateStock(CreateStockRequest request) {
         System.out.println("Inside update inventory for order " + request);
         UpdateStockResponse orderStatus = new UpdateStockResponse();
         try {
@@ -60,6 +63,15 @@ private final StockRepository repository;
             i.setQuantity(stock.getQuantity());
             repository.save(i);
         }
+    }
+
+    @Override
+    public AccountResponse getAll() {
+//        return ((List<StockEntity>) repository.findAll());
+
+        AccountResponse accountResponse = new AccountResponse(repository.findAll());
+        return accountResponse;
+
     }
 
 }
